@@ -1,0 +1,9 @@
+127.0.0.1 - - [27/May/2022:19:47:24 +0530] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [27/May/2022:19:47:34 +0530] "POST /cogent/AddCustomer HTTP/1.1" 500 1501
+0:0:0:0:0:0:0:1 - - [27/May/2022:19:48:08 +0530] "POST /cogent/AddCustomer HTTP/1.1" 500 1444
+0:0:0:0:0:0:0:1 - - [27/May/2022:19:48:43 +0530] "POST /cogent/AddCustomer HTTP/1.1" 200 -
+0:0:0:0:0:0:0:1 - - [27/May/2022:19:56:40 +0530] "POST /cogent/AddCustomer HTTP/1.1" 200 86
+0:0:0:0:0:0:0:1 - - [27/May/2022:19:57:06 +0530] "POST /cogent/AddCustomer HTTP/1.1" 200 14
+0:0:0:0:0:0:0:1 - - [27/May/2022:19:58:35 +0530] "POST /cogent/AddCustomer HTTP/1.1" 200 104
+0:0:0:0:0:0:0:1 - - [27/May/2022:20:01:08 +0530] "POST /cogent/AddCustomer HTTP/1.1" 200 14
+0:0:0:0:0:0:0:1 - - [27/May/2022:20:01:58 +0530] "POST /cogent/AddCustomer HTTP/1.1" 200 104

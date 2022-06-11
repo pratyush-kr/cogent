@@ -1,0 +1,71 @@
+package com.cogent;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
+import java.io.IOException;
+import com.google.gson.Gson;
+
+public class AddCustomer extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    public AddCustomer() {
+        super();
+    }
+    @SuppressWarnings("unused")
+    private class Pojo {
+    	private String name;
+    	private String email;
+    	private String phoneNumber;
+    	private String problemDesc;
+    	private String slNumber;
+		public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
+		public String getEmail() {
+			return email;
+		}
+		public void setEmail(String email) {
+			this.email = email;
+		}
+		public String getPhoneNumber() {
+			return phoneNumber;
+		}
+		public void setPhoneNumber(String phoneNumber) {
+			this.phoneNumber = phoneNumber;
+		}
+		public String getProblemDesc() {
+			return problemDesc;
+		}
+		public void setProblemDesc(String problemDesc) {
+			this.problemDesc = problemDesc;
+		}
+		public String getSlNumber() {
+			return slNumber;
+		}
+		public void setSlNumber(String slNumber) {
+			this.slNumber = slNumber;
+		}
+    	
+    }
+ 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+ 		response.addHeader("Access-Control-Allow-Methods", "POST, GET");
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		BufferedReader reader = request.getReader();
+		String jsonStr = "";
+		String line;
+		while((line = reader.readLine()) != null) {
+			jsonStr += line;
+		}
+		Gson gson = new Gson();
+		Pojo pojo = gson.fromJson(jsonStr, Pojo.class);
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}

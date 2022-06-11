@@ -1,0 +1,95 @@
+package com.cogent;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.google.gson.Gson;
+
+public class AddCustomer extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    public AddCustomer() {
+        super();
+    }
+    @SuppressWarnings("unused")
+    private class Pojo {
+    	private String name;
+    	private String email;
+    	private String phoneNumber;
+    	private String problemDesc;
+    	private String slNumber;
+		public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
+		public String getEmail() {
+			return email;
+		}
+		public void setEmail(String email) {
+			this.email = email;
+		}
+		public String getPhoneNumber() {
+			return phoneNumber;
+		}
+		public void setPhoneNumber(String phoneNumber) {
+			this.phoneNumber = phoneNumber;
+		}
+		public String getProblemDesc() {
+			return problemDesc;
+		}
+		public void setProblemDesc(String problemDesc) {
+			this.problemDesc = problemDesc;
+		}
+		public String getSlNumber() {
+			return slNumber;
+		}
+		public void setSlNumber(String slNumber) {
+			this.slNumber = slNumber;
+		}
+    	
+    }
+ 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+ 		response.addHeader("Access-Control-Allow-Methods", "POST, GET");
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		BufferedReader reader = request.getReader();
+		String jsonStr = "";
+		String line;
+		while((line = reader.readLine()) != null) {
+			jsonStr += line;
+		}
+		Gson gson = new Gson();
+		Pojo pojo = gson.fromJson(jsonStr, Pojo.class);
+		try {
+//			System.out.println(jsonStr);
+			writeToDB(pojo);			
+			response.getWriter().append("Item Added");
+		} catch (SQLException e) {
+			System.out.println(e.toString());
+			response.getWriter().append(e.toString());
+		} catch (Exception e) {
+			System.out.print(e.toString());
+		}
+	}
+ 	protected void writeToDB(Pojo data) throws SQLException {
+ 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cogent?allowPublicKeyRetrieval=true&useSSL=false", "radian", "12345");
+		Statement stmt = conn.createStatement();
+		String query = String.format("insert into customer (name, email, phoneNumber, problemDesc, serviceNumber) "
+				+ "values ('%s', '%s', '%s', '%s', '%s')", data.getName(), data.getEmail(), data.getPhoneNumber(), data.getProblemDesc(),
+				data.getSlNumber());
+		stmt.executeQuery(query);
+ 	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}

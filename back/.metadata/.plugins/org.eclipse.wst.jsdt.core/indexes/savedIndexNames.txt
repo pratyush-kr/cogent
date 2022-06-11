@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Pratyush\Project\cogent-project\back\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+887097999.index
+802608228.index
+3236488096.index
+1252573359.index
+2833314984.index
+2558632960.index
