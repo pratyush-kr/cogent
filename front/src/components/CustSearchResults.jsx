@@ -36,6 +36,7 @@ export const CustSearchResults = (props) => {
 			props.states.setIsInventorySearch(false);
 			props.states.setIsAddCust(false);
 			props.states.setIsCustSearch(false);
+			props.states.setIsEdit(true);
 		}
 	};
 	return (

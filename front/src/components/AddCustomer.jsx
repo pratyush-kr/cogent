@@ -10,10 +10,8 @@ export const AddCustomer = (props) => {
 		const current = new Date();
 		const data = {
 			name: e.target[0].value,
-			email: e.target[1].value,
-			phoneNumber: e.target[2].value,
-			problemDesc: e.target[3].value,
-			serialNumber: e.target[4].value,
+			phoneNumber: e.target[1].value,
+			serialNumber: e.target[2].value,
 			dateOfService: `${current.getFullYear()}-${
 				current.getMonth() + 1
 			}-${current.getDate()}`,
@@ -27,18 +25,8 @@ export const AddCustomer = (props) => {
 				<div>
 					<input type="text" placeholder="Name" className="txt-in" />
 					<input
-						type="email"
-						placeholder="Email"
-						className="txt-in"
-					/>
-					<input
 						type="text"
 						placeholder="Phone Number"
-						className="txt-in"
-					/>
-					<input
-						type="text"
-						placeholder="Problem Description"
 						className="txt-in"
 					/>
 					<input

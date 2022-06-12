@@ -57,7 +57,7 @@ body {
 	display: flex;
 	flex-direction: row;
 	background-color: rgba(255, 255, 255, 0.25);
-	backdrop-filter: blur(10px);
+	backdrop-filter: blur(5px);
 	margin: auto;
 	height: 90vh;
 	width: 48.3vw;
@@ -69,8 +69,8 @@ body {
 	border-radius: 0.3rem;
 	display: flex;
 	flex-direction: column;
-	background-color: rgba(232, 186, 186, 0.25);
-	height: 43vh;
+	background-color: rgba(255, 255, 255, 0.3);
+	height: 43.8vh;
 	width: 22.5vw;
 	justify-content: center;
 	margin-top: 1vh;
@@ -152,4 +152,58 @@ body {
 
 .disabled:active {
 	box-shadow: 2px 2px 2px 0px black;
+}
+
+.txt-box {
+	display: flex;
+	background-color: rgba(255, 255, 255, 0.2);
+	height: 30vh;
+	width: 30vw;
+	margin: auto;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	border-radius: 0.3rem;
+	flex-direction: row;
+}
+
+.problem {
+	background-color: wheat;
+	width: 10vw;
+	height: 5vh;
+	border-radius: 3rem;
+	margin-bottom: 0.5vh;
+	justify-content: right;
+	position: relative;
+}
+
+.minus {
+	min-height: 3vh;
+	max-height: 3vh;
+	max-width: 2vw;
+	min-width: 2vw;
+	box-shadow: none;
+	border: none;
+	color: black;
+	background-color: white;
+}
+
+.no-sheet {
+	background-color: transparent;
+}
+
+.plus {
+	min-height: 4.3vh;
+	max-height: 4.3vh;
+	max-width: 2vw;
+	min-width: 2vw;
+	box-shadow: none;
+	border: none;
+	color: black;
+	background-color: white;
+	display: inline;
+}
+
+.plus-prob {
+	min-width: 13.25vw;
+	max-width: 13.25vw;
 }

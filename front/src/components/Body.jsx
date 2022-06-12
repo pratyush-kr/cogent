@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { AddItem } from "./AddItem";
 import { SearchItems } from "./SearchItems";
 import { AddCustomer } from "./AddCustomer";
@@ -7,6 +7,7 @@ import { SearchCustomer } from "./SearchCustomer";
 import { CustSearchResults } from "./CustSearchResults";
 import { InventorySearchResults } from "./InventorySearchResults";
 import { CustAddConf } from "./CustAddConf";
+import { Edit } from "./Edit";
 
 export const Body = () => {
 	const [isAddItem, setIsAddItem] = useState(false);
@@ -14,12 +15,14 @@ export const Body = () => {
 	const [data, setData] = useState({});
 	const [isAddCust, setIsAddCust] = useState(false);
 	const [isCustSearch, setIsCustSearch] = useState(false);
+	const [isEdit, setIsEdit] = useState(false);
 	const states = {
 		setIsAddItem,
 		setIsInventorySearch,
 		setData,
 		setIsAddCust,
 		setIsCustSearch,
+		setIsEdit,
 	};
 	// useEffect(() => console.log(data), [data]);
 
@@ -32,11 +35,13 @@ export const Body = () => {
 			return <CustAddConf data={data} states={states} />;
 		} else if (isCustSearch === true) {
 			return <CustSearchResults data={data} states={states} />;
+		} else if (isEdit === true) {
+			return <Edit data={data} states={states} />;
 		}
 	};
 	return (
 		<div className="app-body">
-			<div className="part">
+			<div className="part no-sheet">
 				<div>
 					<AddItem states={states} />
 					<SearchItems states={states} />
