@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AddItem } from "./AddItem";
 import { SearchItems } from "./SearchItems";
 import { AddCustomer } from "./AddCustomer";
@@ -21,6 +21,8 @@ export const Body = () => {
 		setIsAddCust,
 		setIsCustSearch,
 	};
+	// useEffect(() => console.log(data), [data]);
+
 	const dynamicPart = () => {
 		if (isInventorySearch === true) {
 			return <InventorySearchResults />;

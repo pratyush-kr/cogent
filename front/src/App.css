@@ -144,3 +144,12 @@ body {
 .grid-table {
 	margin-left: 1px;
 }
+
+.disabled {
+	background-color: #68c9e7;
+	color: black;
+}
+
+.disabled:active {
+	box-shadow: 2px 2px 2px 0px black;
+}

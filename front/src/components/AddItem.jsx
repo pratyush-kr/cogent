@@ -17,7 +17,6 @@ export const AddItem = (props) => {
 		props.states.setIsAddCust(false);
 		props.states.setIsCustSearch(false);
 		props.states.setData(data);
-		console.log(data);
 	};
 	return (
 		<div className="box add-item">

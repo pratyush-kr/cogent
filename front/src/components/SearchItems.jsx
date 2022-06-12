@@ -21,7 +21,6 @@ export const SearchItems = (props) => {
 			specs: specs,
 		};
 		props.states.setData(data);
-		console.log(data);
 	};
 	return (
 		<div className="box search-item">

@@ -1,7 +1,10 @@
 import React from "react";
 import { DataGrid } from "@material-ui/data-grid";
+import { useState } from "react";
 
 export const CustSearchResults = (props) => {
+	const [selectedRows, setSelectedRows] = useState([]);
+	const [editBtnClass, setEditBtnClass] = useState("btn disabled");
 	if (props.data.phoneNumber === "") return;
 	const handelCancel = (e) => {
 		e.preventDefault();
@@ -22,11 +25,22 @@ export const CustSearchResults = (props) => {
 			};
 			Object.assign(props.data[key], id);
 		}
-		console.log(props.data);
+	};
+	const handelEdit = (e) => {
+		e.preventDefault();
+		if (editBtnClass === "btn disabled") {
+			return;
+		} else {
+			props.states.setData(selectedRows);
+			props.states.setIsAddItem(false);
+			props.states.setIsInventorySearch(false);
+			props.states.setIsAddCust(false);
+			props.states.setIsCustSearch(false);
+		}
 	};
 	return (
 		<div>
-			<span className="h1">Edit</span>
+			<span className="h1">Search Results</span>
 			<form
 				className="grid-table"
 				onSubmit={(e) => {
@@ -45,8 +59,23 @@ export const CustSearchResults = (props) => {
 						justifySelf: "center",
 					}}
 					checkboxSelection
+					onSelectionModelChange={(ids) => {
+						const selectedIds = new Set(ids);
+						if (ids.length === 1) {
+							setEditBtnClass("btn");
+						} else {
+							setEditBtnClass("btn disabled");
+						}
+						setSelectedRows(
+							props.data.filter((row) =>
+								selectedIds.has(row.id.toString())
+							)
+						);
+					}}
 				/>
-				<button className="btn">Edit</button>
+				<button className={editBtnClass} onClick={handelEdit}>
+					Edit
+				</button>
 				<button className="btn" onClick={handelCancel}>
 					cancel
 				</button>
