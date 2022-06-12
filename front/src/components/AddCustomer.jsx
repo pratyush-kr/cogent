@@ -3,9 +3,10 @@ import React from "react";
 export const AddCustomer = (props) => {
 	const handelSubmit = (e) => {
 		e.preventDefault();
-		props.states.setIsAdd(false);
-		props.states.setIsSearch(false);
-		props.states.setIsCust(true);
+		props.states.setIsAddItem(false);
+		props.states.setIsInventorySearch(false);
+		props.states.setIsCustSearch(false);
+		props.states.setIsAddCust(true);
 		const current = new Date();
 		const data = {
 			name: e.target[0].value,

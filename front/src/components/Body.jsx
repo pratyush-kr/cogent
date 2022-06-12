@@ -2,35 +2,34 @@ import React, { useState } from "react";
 import { AddItem } from "./AddItem";
 import { SearchItems } from "./SearchItems";
 import { AddCustomer } from "./AddCustomer";
-import { ItemAdded } from "./ItemAdded";
-import { SetComplete } from "./SetComplete";
-import { Edit } from "./Edit";
-import { SearchResults } from "./SearchResults";
+import { ItemAddConf } from "./ItemAddConf";
+import { SearchCustomer } from "./SearchCustomer";
+import { CustSearchResults } from "./CustSearchResults";
+import { InventorySearchResults } from "./InventorySearchResults";
 import { CustAddConf } from "./CustAddConf";
 
 export const Body = () => {
-	const [isAdd, setIsAdd] = useState(false);
-	const [isItSearch, setIsSearch] = useState(false);
+	const [isAddItem, setIsAddItem] = useState(false);
+	const [isInventorySearch, setIsInventorySearch] = useState(false);
 	const [data, setData] = useState({});
-	const [isCust, setIsCust] = useState(false);
-	const [isEdit, setEdit] = useState(false);
+	const [isAddCust, setIsAddCust] = useState(false);
+	const [isCustSearch, setIsCustSearch] = useState(false);
 	const states = {
-		setIsAdd,
-		setIsSearch,
+		setIsAddItem,
+		setIsInventorySearch,
 		setData,
-		setIsCust,
-		setEdit,
+		setIsAddCust,
+		setIsCustSearch,
 	};
 	const dynamicPart = () => {
-		if (isItSearch === true) {
-			return <SearchResults />;
-		} else if (isAdd === true) {
-			return <ItemAdded data={data} states={states} />;
-		} else if (isCust === true) {
+		if (isInventorySearch === true) {
+			return <InventorySearchResults />;
+		} else if (isAddItem === true) {
+			return <ItemAddConf data={data} states={states} />;
+		} else if (isAddCust === true) {
 			return <CustAddConf data={data} states={states} />;
-		} else if (isEdit === true) {
-			console.log(data);
-			return <Edit data={data} states={states} />;
+		} else if (isCustSearch === true) {
+			return <CustSearchResults data={data} states={states} />;
 		}
 	};
 	return (
@@ -42,7 +41,7 @@ export const Body = () => {
 				</div>
 				<div>
 					<AddCustomer states={states} />
-					<SetComplete states={states} />
+					<SearchCustomer states={states} />
 				</div>
 			</div>
 			<div className="part">{dynamicPart()}</div>

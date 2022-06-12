@@ -39,7 +39,7 @@ export const CustAddConf = (props) => {
 							e.preventDefault();
 							axios
 								.post(
-									"http://localhost:8080/cogent/AddCustomer",
+									"http://localhost:8080/cogent-server/AddCustomer",
 									JSON.stringify(props.data)
 								)
 								.then((res) => console.log(res));

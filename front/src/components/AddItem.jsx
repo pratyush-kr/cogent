@@ -12,10 +12,10 @@ export const AddItem = (props) => {
 			itemCode: itemCode,
 			specs: specs,
 		};
-		props.states.setIsAdd(true);
-		props.states.setIsSearch(false);
-		props.states.setIsCust(false);
-		props.states.setEdit(false);
+		props.states.setIsAddItem(true);
+		props.states.setIsInventorySearch(false);
+		props.states.setIsAddCust(false);
+		props.states.setIsCustSearch(false);
 		props.states.setData(data);
 		console.log(data);
 	};

@@ -1,11 +1,11 @@
 import React from "react";
 import { DataGrid } from "@material-ui/data-grid";
 
-export const Edit = (props) => {
+export const CustSearchResults = (props) => {
 	if (props.data.phoneNumber === "") return;
 	const handelCancel = (e) => {
 		e.preventDefault();
-		props.states.setEdit(false);
+		props.states.setIsCustSearch(false);
 	};
 	const cols = [
 		{ field: "name", headerName: "Name", width: 150 },

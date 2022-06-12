@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-export const SetComplete = (props) => {
+export const SearchCustomer = (props) => {
 	const handelSubmit = (e) => {
 		e.preventDefault();
 		const data = {
@@ -10,22 +10,22 @@ export const SetComplete = (props) => {
 		};
 		axios
 			.post(
-				"http://localhost:8080/cogent/SetComplete",
+				"http://localhost:8080/cogent-server/SearchCustomer",
 				JSON.stringify(data)
 			)
 			.then((res) => {
 				props.states.setData(res.data);
 			})
 			.then(() => {
-				props.states.setIsAdd(false);
-				props.states.setIsSearch(false);
-				props.states.setIsCust(false);
-				props.states.setEdit(true);
+				props.states.setIsAddItem(false);
+				props.states.setIsInventorySearch(false);
+				props.states.setIsAddCust(false);
+				props.states.setIsCustSearch(true);
 			});
 	};
 	return (
 		<div className="box">
-			<span>Set Complete</span>
+			<span>Search Customer</span>
 			<form onSubmit={handelSubmit}>
 				<div>
 					<input
@@ -35,7 +35,7 @@ export const SetComplete = (props) => {
 					/>
 					<input type="date" placeholder="Date" className="txt-in" />
 				</div>
-				<button className="btn">Edit</button>
+				<button className="btn">Search</button>
 			</form>
 		</div>
 	);

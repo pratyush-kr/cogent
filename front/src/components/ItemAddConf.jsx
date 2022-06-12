@@ -1,18 +1,18 @@
 import React from "react";
 import axios from "axios";
 
-export const ItemAdded = (props) => {
+export const ItemAddConf = (props) => {
 	if (
 		props.data.itemName === "" ||
 		props.data.itemCode === "" ||
 		props.data.specs === ""
 	) {
-		props.states.setIsAdd(false);
+		props.states.setIsAddItem(false);
 		return;
 	}
 	const handelCancel = (e) => {
 		e.preventDefault();
-		props.states.setIsAdd(false);
+		props.states.setIsAddItem(false);
 	};
 	return (
 		<div style={{ display: "flex", flexDirection: "column" }}>
@@ -43,7 +43,7 @@ export const ItemAdded = (props) => {
 							e.preventDefault();
 							axios
 								.post(
-									"http://localhost:8080/cogent/AddItem",
+									"http://localhost:8080/cogent-server/AddItem",
 									JSON.stringify(props.data)
 								)
 								.then((res) => {
