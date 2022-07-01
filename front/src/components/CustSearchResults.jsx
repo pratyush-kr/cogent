@@ -31,6 +31,7 @@ export const CustSearchResults = (props) => {
 		if (editBtnClass === "btn disabled") {
 			return;
 		} else {
+			console.log(selectedRows);
 			props.states.setData(selectedRows);
 			props.states.setIsAddItem(false);
 			props.states.setIsInventorySearch(false);

@@ -32,4 +32,7 @@
 			<item key="bundlePackage" value="=cogent/src\/main\/java&lt;com.cogent"/>
 		</section>
 	</section>
+	<section name="BuildPathsPropertyPage">
+		<item key="pageIndex" value="3"/>
+	</section>
 </section>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 export const CustAddConf = (props) => {
+	const [problemsHtml, setProblemsHtml] = useState([]);
 	const [problems, setProblems] = useState([]);
 	const [prob, setProb] = useState("");
 	if (props.data.name === "" || props.data.phoneNumber === "") return;
@@ -12,10 +13,11 @@ export const CustAddConf = (props) => {
 	const handelDelete = (e) => {
 		e.preventDefault();
 		var idx = e.target.value;
-		setProblems([
+		const data = [
 			...problems.slice(0, idx),
 			...problems.slice(idx + 1, problems.length),
-		]);
+		];
+		setProblems(data);
 	};
 
 	return (
@@ -56,20 +58,25 @@ export const CustAddConf = (props) => {
 								className="btn plus"
 								onClick={(e) => {
 									e.preventDefault();
-									setProblems([
-										...problems,
+									setProblemsHtml([
+										...problemsHtml,
 										<div className="problem">
-											<span>{prob}</span>
-											<button>-</button>
+											<div className="msg">
+												<span>{prob}</span>
+											</div>
+											<div className="btn-minus">
+												<button>-</button>
+											</div>
 										</div>,
 									]);
+									setProblems([...problems, prob]);
 								}}
 							>
 								+
 							</button>
 						</div>
 					</form>
-					<div className="txt-box">{problems}</div>
+					<div className="txt-box">{problemsHtml}</div>
 				</div>
 				<form
 					onSubmit={(e) => {
@@ -80,8 +87,13 @@ export const CustAddConf = (props) => {
 						className="btn"
 						onClick={(e) => {
 							e.preventDefault();
+							var str = "x";
 							const data = props.data;
-							data["problemDesc"] = problems.toString();
+							for (var i in problems) {
+								str += ", " + problems[i];
+							}
+							console.log(str.substring(2));
+							data["problemDesc"] = str.substring(2);
 							axios
 								.post(
 									"http://localhost:8080/cogent-server/AddCustomer",
@@ -105,8 +117,3 @@ export const CustAddConf = (props) => {
 		</div>
 	);
 };
-
-/*
-
-
- */
