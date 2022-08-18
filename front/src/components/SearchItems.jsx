@@ -11,10 +11,11 @@ export const SearchItems = (props) => {
 		setItemCode(e.target[0].value);
 		setItemName(e.target[1].value);
 		setSpecs(e.target[2].value);
-		props.states.setIsAdd(false);
-		props.states.setIsSearch(true);
-		props.states.setIsCust(false);
-		props.states.setEdit(false);
+		props.states.setIsAddItem(false);
+		props.states.setIsInventorySearch(true);
+		props.states.setIsCustSearch(false);
+		props.states.setIsEdit(false);
+		props.states.setIsAddCust(false);
 		const data = {
 			itemCode: itemCode,
 			itemName: itemName,

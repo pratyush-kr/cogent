@@ -5,7 +5,7 @@ import { AddCustomer } from "./AddCustomer";
 import { ItemAddConf } from "./ItemAddConf";
 import { SearchCustomer } from "./SearchCustomer";
 import { CustSearchResults } from "./CustSearchResults";
-import { InventorySearchResults } from "./InventorySearchResults";
+import { ItemSearchResults } from "./ItemSearchResults";
 import { CustAddConf } from "./CustAddConf";
 import { Edit } from "./Edit";
 
@@ -28,7 +28,7 @@ export const Body = () => {
 
 	const dynamicPart = () => {
 		if (isInventorySearch === true) {
-			return <InventorySearchResults />;
+			return <ItemSearchResults />;
 		} else if (isAddItem === true) {
 			return <ItemAddConf data={data} states={states} />;
 		} else if (isAddCust === true) {
