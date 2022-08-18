@@ -12,20 +12,23 @@ export const SearchItems = (props) => {
 		setItemCode(e.target[0].value);
 		setItemName(e.target[1].value);
 		setSpecs(e.target[2].value);
-		props.states.setIsAddItem(false);
-		props.states.setIsInventorySearch(true);
-		props.states.setIsCustSearch(false);
-		props.states.setIsEdit(false);
-		props.states.setIsAddCust(false);
 		const data = {
 			itemCode: itemCode,
 			itemName: itemName,
 			specs: specs,
 		};
-		axios.post("http://localhost:8080/searchCustomer", data).then((res) => {
-			console.log(res);
-		});
-		props.states.setData(data);
+		axios
+			.post("http://localhost:8080/searchCustomer", data)
+			.then((res) => {
+				props.states.setData(res.data);
+			})
+			.then(() => {
+				props.states.setIsAddItem(false);
+				props.states.setIsItemSearch(true);
+				props.states.setIsAddCust(false);
+				props.states.setIsCustSearch(false);
+				props.states.setIsEdit(false);
+			});
 	};
 	return (
 		<div className="box search-item">

@@ -11,14 +11,14 @@ import { Edit } from "./Edit";
 
 export const Body = () => {
 	const [isAddItem, setIsAddItem] = useState(false);
-	const [isInventorySearch, setIsInventorySearch] = useState(false);
+	const [isItemSearch, setIsItemSearch] = useState(false);
 	const [data, setData] = useState({});
 	const [isAddCust, setIsAddCust] = useState(false);
 	const [isCustSearch, setIsCustSearch] = useState(false);
 	const [isEdit, setIsEdit] = useState(false);
 	const states = {
 		setIsAddItem,
-		setIsInventorySearch,
+		setIsItemSearch,
 		setData,
 		setIsAddCust,
 		setIsCustSearch,
@@ -27,7 +27,7 @@ export const Body = () => {
 	// useEffect(() => console.log(data), [data]);
 
 	const dynamicPart = () => {
-		if (isInventorySearch === true) {
+		if (isItemSearch === true) {
 			return <ItemSearchResults data={data} states={states} />;
 		} else if (isAddItem === true) {
 			return <ItemAddConf data={data} states={states} />;
