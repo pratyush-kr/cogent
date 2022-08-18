@@ -28,7 +28,7 @@ export const Body = () => {
 
 	const dynamicPart = () => {
 		if (isInventorySearch === true) {
-			return <ItemSearchResults />;
+			return <ItemSearchResults data={data} states={states} />;
 		} else if (isAddItem === true) {
 			return <ItemAddConf data={data} states={states} />;
 		} else if (isAddCust === true) {

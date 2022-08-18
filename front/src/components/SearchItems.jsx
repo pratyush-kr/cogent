@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { useState } from "react";
 
@@ -21,6 +22,9 @@ export const SearchItems = (props) => {
 			itemName: itemName,
 			specs: specs,
 		};
+		axios.post("http://localhost:8080/searchCustomer", data).then((res) => {
+			console.log(res);
+		});
 		props.states.setData(data);
 	};
 	return (

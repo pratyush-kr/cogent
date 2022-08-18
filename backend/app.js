@@ -64,7 +64,7 @@ app.post("/AddCustomer", (req, res) => {
 
 app.post("/searchCustomer", (req, res) => {
 	/* prettier-ignore */
-	console.log(req.data);
+	console.log(req.body);
 	res.send("hi");
 });
 
