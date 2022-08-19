@@ -5,20 +5,20 @@ import { AddCustomer } from "./AddCustomer";
 import { ItemAddConf } from "./ItemAddConf";
 import { SearchCustomer } from "./SearchCustomer";
 import { CustSearchResults } from "./CustSearchResults";
-import { ItemSearchResults } from "./ItemSearchResults";
+import { InventorySearchResults } from "./InventorySearchResults";
 import { CustAddConf } from "./CustAddConf";
 import { Edit } from "./Edit";
 
 export const Body = () => {
 	const [isAddItem, setIsAddItem] = useState(false);
-	const [isItemSearch, setIsItemSearch] = useState(false);
+	const [isInventorySearch, setIsInventorySearch] = useState(false);
 	const [data, setData] = useState({});
 	const [isAddCust, setIsAddCust] = useState(false);
 	const [isCustSearch, setIsCustSearch] = useState(false);
 	const [isEdit, setIsEdit] = useState(false);
 	const states = {
 		setIsAddItem,
-		setIsItemSearch,
+		setIsInventorySearch,
 		setData,
 		setIsAddCust,
 		setIsCustSearch,
@@ -27,8 +27,8 @@ export const Body = () => {
 	// useEffect(() => console.log(data), [data]);
 
 	const dynamicPart = () => {
-		if (isItemSearch === true) {
-			return <ItemSearchResults data={data} states={states} />;
+		if (isInventorySearch === true) {
+			return <InventorySearchResults />;
 		} else if (isAddItem === true) {
 			return <ItemAddConf data={data} states={states} />;
 		} else if (isAddCust === true) {

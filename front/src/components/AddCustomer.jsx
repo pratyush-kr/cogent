@@ -4,7 +4,7 @@ export const AddCustomer = (props) => {
 	const handelSubmit = (e) => {
 		e.preventDefault();
 		props.states.setIsAddItem(false);
-		props.states.setIsItemSearch(false);
+		props.states.setIsInventorySearch(false);
 		props.states.setIsCustSearch(false);
 		props.states.setIsAddCust(true);
 		const current = new Date();

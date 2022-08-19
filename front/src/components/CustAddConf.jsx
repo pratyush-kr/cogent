@@ -95,7 +95,10 @@ export const CustAddConf = (props) => {
 							console.log(str.substring(2));
 							data["problemDesc"] = str.substring(2);
 							axios
-								.post("http://localhost:8080/AddCustomer", data)
+								.post(
+									"http://localhost:8080/cogent-server/AddCustomer",
+									JSON.stringify(data)
+								)
 								.then((res) => {
 									if (res.data === "Customer Added") {
 										alert("Customer Added");
