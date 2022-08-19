@@ -1,27 +1,27 @@
+import axios from "axios";
 import React from "react";
 import { useState } from "react";
 
 export const SearchItems = (props) => {
-	const [itemCode, setItemCode] = useState("");
-	const [itemName, setItemName] = useState("");
-	const [specs, setSpecs] = useState("");
-
 	const handelSubmit = (e) => {
 		e.preventDefault();
-		setItemCode(e.target[0].value);
-		setItemName(e.target[1].value);
-		setSpecs(e.target[2].value);
-		props.states.setIsAddItem(false);
-		props.states.setIsInventorySearch(true);
-		props.states.setIsCustSearch(false);
-		props.states.setIsEdit(false);
-		props.states.setIsAddCust(false);
 		const data = {
-			itemCode: itemCode,
-			itemName: itemName,
-			specs: specs,
+			itemCode: e.target[1].value,
+			itemName: e.target[0].value,
+			specs: e.target[2].value,
 		};
-		props.states.setData(data);
+		axios
+			.post("http://localhost:8080/searchCustomer", data)
+			.then((res) => {
+				props.states.setData(res.data);
+			})
+			.then(() => {
+				props.states.setIsAddItem(false);
+				props.states.setIsItemSearch(true);
+				props.states.setIsAddCust(false);
+				props.states.setIsCustSearch(false);
+				props.states.setIsEdit(false);
+			});
 	};
 	return (
 		<div className="box search-item">
