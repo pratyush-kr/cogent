@@ -63,9 +63,22 @@ app.post("/AddCustomer", (req, res) => {
 });
 
 app.post("/searchCustomer", (req, res) => {
-	/* prettier-ignore */
 	console.log(req.body);
-	res.send("hi");
+	const { itemCode, itemName, specs } = req.body;
+	const query = `select * from inventory where itemCode like '${itemCode}%' and itemName like '${itemName}%' and specs like '${specs}%'`;
+	connection.query(query, (error, results) => {
+		if (error) {
+			console.log(error);
+			res.send(err);
+		} else {
+			console.log(results);
+			res.send(results);
+		}
+	});
+});
+
+app.get("/hi", (req, res) => {
+	res.send("<h1>Hi Swagat</h1>");
 });
 
 var server = app.listen(8080, () => {

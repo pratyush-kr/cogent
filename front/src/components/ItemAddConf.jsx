@@ -43,8 +43,8 @@ export const ItemAddConf = (props) => {
 							e.preventDefault();
 							axios
 								.post(
-									"http://localhost:8080/cogent-server/AddItem",
-									JSON.stringify(props.data)
+									"http://localhost:8080/AddItem",
+									props.data
 								)
 								.then((res) => {
 									console.log(res.data);

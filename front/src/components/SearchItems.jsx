@@ -3,19 +3,12 @@ import React from "react";
 import { useState } from "react";
 
 export const SearchItems = (props) => {
-	const [itemCode, setItemCode] = useState("");
-	const [itemName, setItemName] = useState("");
-	const [specs, setSpecs] = useState("");
-
 	const handelSubmit = (e) => {
 		e.preventDefault();
-		setItemCode(e.target[0].value);
-		setItemName(e.target[1].value);
-		setSpecs(e.target[2].value);
 		const data = {
-			itemCode: itemCode,
-			itemName: itemName,
-			specs: specs,
+			itemCode: e.target[1].value,
+			itemName: e.target[0].value,
+			specs: e.target[2].value,
 		};
 		axios
 			.post("http://localhost:8080/searchCustomer", data)
