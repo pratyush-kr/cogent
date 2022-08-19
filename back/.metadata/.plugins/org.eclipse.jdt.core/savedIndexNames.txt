@@ -1,2 +1,0 @@
-INDEX VERSION 1.131+/home/pratyush/cogent-project/back/.metadata/.plugins/org.eclipse.jdt.core
-1969241630.index

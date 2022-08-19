@@ -9,10 +9,7 @@ export const SearchCustomer = (props) => {
 			dateOfService: e.target[1].value,
 		};
 		axios
-			.post(
-				"http://localhost:8080/cogent-server/SearchCustomer",
-				JSON.stringify(data)
-			)
+			.post("http://localhost:8080/searchCustomer", data)
 			.then((res) => {
 				props.states.setData(res.data);
 			})
@@ -35,7 +32,7 @@ export const SearchCustomer = (props) => {
 					/>
 					<input type="date" placeholder="Date" className="txt-in" />
 				</div>
-				<button className="btn">Search</button>
+				<input type="submit" className="btn" value="Search" />
 			</form>
 		</div>
 	);
