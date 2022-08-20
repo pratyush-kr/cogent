@@ -12,20 +12,11 @@ export const CustSearchResults = (props) => {
 	};
 	const cols = [
 		{ field: "name", headerName: "Name", width: 150 },
-		{ field: "email", headerName: "Email", width: 200 },
 		{ field: "phoneNumber", headerName: "Contact", width: 120 },
-		{ field: "problemDesc", headerName: "Problems", width: 150 },
 		{ field: "serialNumber", headerName: "Sl No", width: 150 },
 		{ field: "dateOfService", headerName: "Date", width: 150 },
+		{ field: "problemDesc", headerName: "Problems", width: 150 },
 	];
-	const addId = () => {
-		for (var key in props.data) {
-			const id = {
-				id: `${props.data[key]["serialNumber"]}-${props.data[key]["dateOfService"]}`,
-			};
-			Object.assign(props.data[key], id);
-		}
-	};
 	const handelEdit = (e) => {
 		e.preventDefault();
 		if (editBtnClass === "btn disabled") {
@@ -49,7 +40,6 @@ export const CustSearchResults = (props) => {
 					e.preventDefault();
 				}}
 			>
-				{addId()}
 				<DataGrid
 					className="grid-table"
 					rows={props.data}
@@ -74,6 +64,7 @@ export const CustSearchResults = (props) => {
 							)
 						);
 					}}
+					getRowId={(row) => row.customerId}
 				/>
 				<button className={editBtnClass} onClick={handelEdit}>
 					Edit

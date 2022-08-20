@@ -62,7 +62,7 @@ app.post("/AddCustomer", (req, res) => {
 	});
 });
 
-app.post("/searchCustomer", (req, res) => {
+app.post("/searchItems", (req, res) => {
 	console.log(req.body);
 	const { itemCode, itemName, specs } = req.body;
 	const query = `select * from inventory where itemCode like '${itemCode}%' and itemName like '${itemName}%' and specs like '${specs}%'`;
@@ -70,6 +70,21 @@ app.post("/searchCustomer", (req, res) => {
 		if (error) {
 			console.log(error);
 			res.send(err);
+		} else {
+			console.log(results);
+			res.send(results);
+		}
+	});
+});
+
+app.post("/searchCustomer", (req, res) => {
+	/* prettier-ignore */
+	const { serialNumber, dateOfService } = req.body;
+	const query = `select * from customer where serialNumber like '${serialNumber}%' and dateOfService like '${dateOfService}%'`;
+	connection.query(query, (error, results) => {
+		if (error) {
+			console.log(error);
+			res.send(error);
 		} else {
 			console.log(results);
 			res.send(results);

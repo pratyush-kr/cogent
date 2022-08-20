@@ -8,17 +8,13 @@ export const SearchCustomer = (props) => {
 			serialNumber: e.target[0].value,
 			dateOfService: e.target[1].value,
 		};
-		axios
-			.post("http://localhost:8080/searchCustomer", data)
-			.then((res) => {
-				props.states.setData(res.data);
-			})
-			.then(() => {
-				props.states.setIsAddItem(false);
-				props.states.setIsInventorySearch(false);
-				props.states.setIsAddCust(false);
-				props.states.setIsCustSearch(true);
-			});
+		axios.post("http://localhost:8080/searchCustomer", data).then((res) => {
+			props.states.setData(res.data);
+			props.states.setIsAddItem(false);
+			props.states.setIsItemSearch(false);
+			props.states.setIsAddCust(false);
+			props.states.setIsCustSearch(true);
+		});
 	};
 	return (
 		<div className="box">
