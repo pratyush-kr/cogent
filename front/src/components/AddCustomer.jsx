@@ -7,14 +7,10 @@ export const AddCustomer = (props) => {
 		props.states.setIsItemSearch(false);
 		props.states.setIsCustSearch(false);
 		props.states.setIsAddCust(true);
-		const current = new Date();
 		const data = {
 			name: e.target[0].value,
 			phoneNumber: e.target[1].value,
 			serialNumber: e.target[2].value,
-			dateOfService: `${current.getFullYear()}-${
-				current.getMonth() + 1
-			}-${current.getDate()}`,
 		};
 		props.states.setData(data);
 	};

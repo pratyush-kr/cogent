@@ -1,6 +1,5 @@
 import axios from "axios";
 import React from "react";
-import { useState } from "react";
 
 export const SearchItems = (props) => {
 	const handelSubmit = (e) => {
@@ -11,7 +10,7 @@ export const SearchItems = (props) => {
 			specs: e.target[2].value,
 		};
 		axios
-			.post("http://localhost:8080/searchCustomer", data)
+			.post("http://localhost:8080/searchItems", data)
 			.then((res) => {
 				props.states.setData(res.data);
 			})
